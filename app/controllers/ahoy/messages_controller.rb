@@ -23,8 +23,7 @@ module Ahoy
       if secure_compare(params[:signature], signature)
         redirect_to url
       else
-        redirect_to url
-        #redirect_to main_app.root_url
+        redirect_to "/broken_redirect?url=#{url}"
       end
     end
 
