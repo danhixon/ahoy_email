@@ -1,5 +1,5 @@
 module Ahoy
-  class MessagesController < ActionController::Base
+  class MessagesController < ApplicationController
     before_filter :set_message
 
     def open
