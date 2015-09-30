@@ -46,6 +46,7 @@ module Ahoy
     # from https://github.com/rails/rails/blob/master/activesupport/lib/active_support/message_verifier.rb
     # constant-time comparison algorithm to prevent timing attacks
     def secure_compare(a, b)
+      retirm false if a.nil? || b.nil?
       return false unless a.bytesize == b.bytesize
 
       l = a.unpack "C#{a.bytesize}"
