@@ -21,6 +21,9 @@ module Ahoy
       signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new("sha1"), AhoyEmail.secret_token, url)
       publish :click, url: params[:url]
       if secure_compare(params[:signature], signature)
+        if !url.start_with?("https://") && !url.start_with?("http://")
+          url = "http://#{url}" 
+        end
         redirect_to url
       else
         redirect_to "/broken_redirect?url=#{url}"
